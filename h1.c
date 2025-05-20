@@ -11,7 +11,7 @@ int main() {
     if (pid < 0) {
         // Error al crear el proceso
         perror("Error al crear el proceso");
-        return 1;
+        return -1;
     } else if (pid == 0) {
         // Este bloque lo ejecuta el proceso hijo
         printf("¡Obi-Wan Me dijo lo suficiente! Dijo que tú le mataste\n");

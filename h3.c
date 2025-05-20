@@ -13,7 +13,7 @@ int main() {
     // Crear el pipe
     if (pipe(fd) == -1) {
         perror("Error al crear el pipe");
-        return 1;
+        return -1;
     }
 
     pid = fork();
@@ -32,7 +32,7 @@ int main() {
         if (write(fd[1], &suma_hijo, sizeof(int)) == -1) {
             perror("Error al escribir en el pipe");
             close(fd[1]);
-            exit(1);
+            return -1;
         }
 
         printf("Hijo: suma de 0 a 499 = %d\n", suma_hijo);
@@ -53,7 +53,7 @@ int main() {
         if (read(fd[0], &suma_hijo, sizeof(int)) == -1) {
             perror("Error al leer del pipe");
             close(fd[0]);
-            return 1;
+            return -11;
         }
 
         close(fd[0]);

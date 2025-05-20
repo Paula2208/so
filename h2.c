@@ -13,7 +13,7 @@ int main() {
 
     if (pid == -1) {
         perror("Error al crear el proceso");
-        return 1;
+        return -1;
     } else if (pid == 0) {
         // Hijo
         for (int i = 0; i <= 499; i++) {
@@ -23,7 +23,7 @@ int main() {
         archivo = fopen("resultado_hijo.txt", "w");
         if (archivo == NULL) {
             perror("Error al abrir el archivo para escribir");
-            return 1;
+            return -1;
         }
         fprintf(archivo, "%d", suma_hijo);
         fclose(archivo);
@@ -41,7 +41,7 @@ int main() {
         archivo = fopen("resultado_hijo.txt", "r");
         if (archivo == NULL) {
             perror("Error al abrir el archivo para leer");
-            return 1;
+            return -1;
         }
         fscanf(archivo, "%d", &suma_hijo);
         fclose(archivo);
