@@ -20,7 +20,7 @@ int main() {
 
     if (pid < 0) {
         perror("Error al crear el proceso");
-        return 1;
+        return -1;
     } else if (pid == 0) {
         // Proceso hijo
         close(fd[0]); // Cerrar la lecturs
@@ -53,7 +53,7 @@ int main() {
         if (read(fd[0], &suma_hijo, sizeof(int)) == -1) {
             perror("Error al leer del pipe");
             close(fd[0]);
-            return -11;
+            return -1;
         }
 
         close(fd[0]);
