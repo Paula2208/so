@@ -32,7 +32,11 @@ int main() {
     }
 
     // Asociar la memoria al espacio del proceso padre
-    double *ap_memory = (double *)shmat(shmid, NULL, 0);
+    double *ap_memory = (double *)shmat(
+        shmid, // memoria compartida
+        NULL, // 
+        0
+    );
     if (ap_memory == (void *)-1) {
         perror("Error al asociar la memoria compartida");
         return -1;
@@ -66,7 +70,7 @@ int main() {
         wait(NULL);
     }
 
-    // Sumar los resultados
+    // Sumar los resultados (se intercambia la información)
     double pi = 0.0;
     for (int i = 0; i < 4; i++) {
         pi += ap_memory[i];
