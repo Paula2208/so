@@ -8,7 +8,7 @@
 #include <netinet/in.h>
 
 #define PORT 3550
-#define HOST "127.0.0.1"
+#define HOST "25.21.155.51"// #define HOST "127.0.0.1"
 #define MAX_BUFFER_SIZE 64
 
 int clientfd = -1; // Descriptor del socket global para cerrar desde el manejador
